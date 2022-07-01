@@ -1,3 +1,28 @@
 .App{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+.form{
+  width: 400px;
+}
+.form input, .btn{
+  border: 1px solid red;
+  width: 100%;
+  padding:10px 2px;
+  border-radius: 5px;
+  border: none;
+}
+.btn{
+  padding: 14px;
+  margin-top: 25px;
+}
+.flex{
+  margin: 0px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.nav{
+  margin-left: 10px;
+  cursor: pointer;
+}

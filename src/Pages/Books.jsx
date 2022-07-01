@@ -1,26 +1,22 @@
 import React from "react";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { BookList } from "../Components/BookList";
 import { FilterSort } from "../Components/FilterSort";
-import { getBooks } from "../Redux/action";
 import styled from "styled-components";
-import { useSearchParams } from "react-router-dom";
 
 export const Books = () => {
-  const [searchparams] = useSearchParams();
-
-  const dispatch = useDispatch();
-  const books = useSelector((state) => state.books);
-
-  useEffect(() => {
-    const urlCategory = searchparams.getAll("category");
-    const urlSort = searchparams.getAll("sortBy");
-
-    if (books.length === 0 && (!urlCategory || !urlSort)) {
-      dispatch(getBooks());
-    }
-  }, [dispatch, books, searchparams]);
+  //const [searchparams] = useSearchParams();
+  //
+  //  const dispatch = useDispatch();
+  //  const books = useSelector((state) => state.books);
+  //
+  //  useEffect(() => {
+  //    //const urlCategory = searchparams.getAll("category");
+  //    //const urlSort = searchparams.getAll("sortBy");
+  //
+  //    if (books.length === 0) {
+  //      dispatch(getBooks());
+  //    }
+  //  }, [dispatch, books]);
 
   //console.log("books", books);
   return (
@@ -31,7 +27,7 @@ export const Books = () => {
           <FilterSort />
         </FilterSortWrapper>
         <BookListWrapper>
-          <BookList books={books} />
+          <BookList />
         </BookListWrapper>
       </BookPageWrapper>
     </div>

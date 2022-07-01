@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSearchParams } from "react-router-dom";
-import { getBooks } from "../Redux/action";
 
 export const FilterSort = () => {
   const dispatch = useDispatch();
@@ -26,31 +25,27 @@ export const FilterSort = () => {
   const handleSort = (e) => {
     setSortBy(e.target.value);
   };
-  //console.log(sortBy);
-  useEffect(() => {
-    if (sortBy) {
-      const params = {
-        category: searchParams.getAll("category"),
-        sortBy,
-      };
-      const getBooksParams = {
-        params: {
-          category: searchParams.getAll("category"),
-          _sort: "release_year",
-          _order: sortBy,
-        },
-      };
-      setSearchParams(params);
-      dispatch(getBooks(getBooksParams));
-    }
-  }, [setSearchParams, sortBy, searchParams, dispatch]);
 
   useEffect(() => {
-    if (category) {
-      setSearchParams({ category });
-      dispatch(getBooks({ params: { category } }));
+    if (category || sortBy) {
+      let params = {};
+      category && (params.category = category);
+      sortBy && (params.sortBy = sortBy);
+      setSearchParams(params);
     }
-  }, [setSearchParams, category, dispatch]);
+  }, [setSearchParams, category, dispatch, sortBy]);
+
+  //console.log(sortBy);
+  //  useEffect(() => {
+  //    if (sortBy) {
+  //      const params = {
+  //        category: searchParams.getAll("category"),
+  //        sortBy,
+  //      };
+  //
+  //      setSearchParams(params);
+  //    }
+  //  }, [setSearchParams, sortBy, searchParams, dispatch]);
 
   return (
     <div>
